@@ -6,6 +6,9 @@ Requirements: pip install PyAudioWPatch numpy psutil GPUtil
 # Install
 add this to your windows powershell profile
 
+## 🎧 Soundbar Function (PowerShell)
+
+```powershell
 function soundbar {
     param(
         [switch]$stop,
@@ -16,23 +19,43 @@ function soundbar {
         [double]$gain = 0,
         [switch]$list
     )
+
     $script = "$env:USERPROFILE\scripts\audio_visualizer.py"
+
     if ($stop) {
         python $script --stop
-    } elseif ($list) {
+    }
+    elseif ($list) {
         python $script --list
-    } elseif ($full) {
+    }
+    elseif ($full) {
         # Full screen in current pane
         python $script --top @args
-    } else {
+    }
+    else {
         # Split bottom pane with visualizer (user keeps typing in top pane)
         $pyArgs = "--top"
-        if ($bars -gt 0) { $pyArgs += " --bars $bars" }
+
+        if ($bars -gt 0)   { $pyArgs += " --bars $bars" }
         if ($height -gt 0) { $pyArgs += " --height $height" }
-        if ($gain -gt 0) { $pyArgs += " --gain $gain" }
+        if ($gain -gt 0)   { $pyArgs += " --gain $gain" }
+
         wt split-pane -H -s $size -- python $script $pyArgs.Split(' ')
     }
 }
+```
+
+---
+
+### 🔥 Usage
+
+```powershell
+soundbar              # run in split pane
+soundbar -full       # run fullscreen
+soundbar -stop       # stop visualizer
+soundbar -list       # list devices
+soundbar -bars 50 -height 20 -gain 1.5
+```
 
 
 
