@@ -60,3 +60,6 @@ soundbar -bars 50 -height 20 -gain 1.5
 
 
 <img width="1893" height="1020" alt="image" src="https://github.com/user-attachments/assets/926bd50e-d3d8-4936-825f-131198ea2c30" />
+
+<img width="1899" height="1026" alt="image" src="https://github.com/user-attachments/assets/7c4a2383-6e85-4b97-9970-d095e13d5922" />
+
